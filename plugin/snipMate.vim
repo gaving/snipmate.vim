@@ -32,8 +32,9 @@ fun! MakeSnip(scope, trigger, content, ...)
 		let {var}[a:scope][a:trigger] = multisnip ? [[a:1, a:content]] : a:content
 	elseif multisnip | let {var}[a:scope][a:trigger] += [[a:1, a:content]]
 	else
-		echom 'Warning in snipMate.vim: Snippet '.a:trigger.' is already defined.'
-				\ .' See :h multi_snip for help on snippets with multiple matches.'
+		let {var}[a:scope][a:trigger] = multisnip ? [[a:1, a:content]] : a:content
+		" echom 'Warning in snipMate.vim: Snippet '.a:trigger.' is already defined.'
+				" \ .' See :h multi_snip for help on snippets with multiple matches.'
 	endif
 endf
 
